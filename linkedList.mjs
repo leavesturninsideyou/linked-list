@@ -1,25 +1,33 @@
 export function linkedList () {
-    let head = node (null, node1);
-    let node1 = node (null, tail);
-    let tail = node (null, null);
-
+    let last = node ("im third", null);
+    let middle = node ("im second", last);
+    let first = node ("im first", middle);
+    
     let length = 3;
 
+    const head = () => {return first};
+
+    const tail = () => {return last};
+
     const append = function(value) {
-        tail = node1;
-        const newTail = node (value, null);
+        const newLast = node (value, null);
+        const prevNode = node (last.value, newLast);
+
+        last = newLast;
         length += 1;
     }
 
     const prepend = function(value) {
-        head = node1;
-        const newHead = node (value, node1);
+        const nextNode = node (first.value, first.next);
+        const newFirst = node (value, nextNode);
+
+        first = newFirst;
         length += 1;
     }
 
     const size = () => {return length};
 
-    return { append, prepend, size };
+    return { append, prepend, size, head, tail };
 }
 
 export function node (data, data2) {
@@ -29,5 +37,4 @@ export function node (data, data2) {
     return { value, next };
 }
 
-
-console.log(linkedList.size, "i dont work");
+const list = linkedList();
