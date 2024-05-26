@@ -11,8 +11,8 @@ export function linkedList () {
 
     const append = function(value) {
         const newLast = node (value, null);
-        const prevNode = node (last.value, newLast);
 
+        last.next = newLast;
         last = newLast;
         length += 1;
     }
@@ -27,7 +27,36 @@ export function linkedList () {
 
     const size = () => {return length};
 
-    return { append, prepend, size, head, tail };
+    const at = function(index, current = 1, subject = first) {
+        if (current === index) {
+            return subject;
+        } else {
+            return at(index, current + 1, subject.next);
+        }
+    }
+
+    const pop = function() {
+        let penult = list.at(length - 1);
+
+        last = penult;
+        penult.next = null;
+    }
+
+    const contains = function(value, current = 1, subject = first) {
+        if (subject.value !== value) {
+            return false;
+        }
+
+        if (subject.value === value) {
+            return true;
+        } 
+
+        //unfinished
+        
+        return contains(value, current + 1, subject.next)
+    }
+
+    return { append, prepend, size, head, tail, at, pop, contains };
 }
 
 export function node (data, data2) {
@@ -38,3 +67,9 @@ export function node (data, data2) {
 }
 
 const list = linkedList();
+
+console.log(list.contains("im second"));
+
+
+
+
