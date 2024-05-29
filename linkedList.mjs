@@ -1,11 +1,11 @@
 export function linkedList () {
-    let last = node ("im third", null);
-    let middle = node ("im second", last);
-    let first = node ("im first", middle);
+    let last = node ("3", null);
+    let middle = node ("2", last);
+    let first = node ("1", middle);
     
     let length = 3;
 
-    const head = () => {return first};
+    const head = () => {return first ? first : "There is no head."};
 
     const tail = () => {return last};
 
@@ -40,6 +40,7 @@ export function linkedList () {
 
         last = penult;
         penult.next = null;
+        length -= 1;
     }
 
     const contains = function(value, current = 1, subject = first) {
@@ -85,6 +86,13 @@ export function node (data, data2) {
 }
 
 const list = linkedList();
+
+/* Example:
+
+list.prepend(value);
+console.log(list.head());
+
+*/
 
 
 
