@@ -43,20 +43,38 @@ export function linkedList () {
     }
 
     const contains = function(value, current = 1, subject = first) {
-        if (subject.value !== value) {
-            return false;
-        }
-
-        if (subject.value === value) {
+        if (value === subject.value) {
             return true;
-        } 
-
-        //unfinished
-        
-        return contains(value, current + 1, subject.next)
+        } else if (length === current) {
+            return false;
+        } else {
+            return contains(value, current + 1, subject.next);
+        }
+    }
+    
+    const find = function(value, current = 1, subject = first) {
+        if (value === subject.value) {
+            return current;
+        } else if (length === current) {
+            return null;
+        } else {
+            return find(value, current + 1, subject.next);
+        }
     }
 
-    return { append, prepend, size, head, tail, at, pop, contains };
+    const toString = function(current = 1, subject = first, listString = `(${subject.value})`) {
+        if (length === current) {
+            listString = listString + " -> null";
+            return listString;   
+        } else {
+            listString = listString + " -> " + `(${subject.next.value})`;
+            
+            return toString(current + 1, subject.next, listString);
+        }
+
+    }
+
+    return { append, prepend, size, head, tail, at, pop, contains, find, toString };
 }
 
 export function node (data, data2) {
@@ -67,8 +85,6 @@ export function node (data, data2) {
 }
 
 const list = linkedList();
-
-console.log(list.contains("im second"));
 
 
 
