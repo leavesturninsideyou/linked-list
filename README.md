@@ -1,11 +1,19 @@
 # linked-list
 
-This project contains a singly linked list, a common data structure. 
+This project contains a singly linked list, a common data structure. By default, there are three nodes.
 
 You will need Node.js installed globally to run these files.
 
-Take a look at the "documentation" below. You can edit the main file (linkedList.mjs) and run any list function of your choosing.
+Take a look at the "documentation" below. You can edit the main file (linkedList.mjs) and run a function of your choosing.
 
 ## List of functions
 
-```append(value)```
+```append(value)``` - adds a new node containing ```value``` to the end of the list
+```prepend(value)``` - adds a new node containing ```value``` to the start of the list
+```size``` returns the total number of nodes in the list
+```head``` returns the first node in the list
+```tail``` returns the last node in the list
+```at(index)``` returns the node at the given ```index```
+```pop``` removes the last element from the list
+```contains(value)``` returns true if the passed in value is in the list and otherwise returns false.
+```find(value)``` returns the index of the node containing value, or null if not found.
