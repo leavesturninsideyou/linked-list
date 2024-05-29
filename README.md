@@ -4,10 +4,8 @@ This project contains a singly linked list, a common data structure.
 
 You will need Node.js installed globally to run these files.
 
-Take a look at the "documentation" present in the main file (placeholder.js) for a list of features that the linked list has.
+Take a look at the "documentation" below. You can edit the main file (linkedList.mjs) and run any list function of your choosing.
 
-Ensure you are in the repository's directory, then enter the following in the command line to run the main file:
+## List of functions
 
-```
-node [placeholder].js
-```
+```append(value)```
