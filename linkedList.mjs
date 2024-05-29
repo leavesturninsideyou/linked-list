@@ -5,7 +5,7 @@ function linkedList () {
     
     let length = 3;
 
-    const head = () => {return first ? first : "There is no head."};
+    const head = () => {return first};
 
     const tail = () => {return last};
 
