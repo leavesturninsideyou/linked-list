@@ -1,4 +1,4 @@
-export function linkedList () {
+function linkedList () {
     let last = node ("3", null);
     let middle = node ("2", last);
     let first = node ("1", middle);
@@ -78,7 +78,7 @@ export function linkedList () {
     return { append, prepend, size, head, tail, at, pop, contains, find, toString };
 }
 
-export function node (data, data2) {
+function node (data, data2) {
     const value = data;
     const next = data2;
 
