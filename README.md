@@ -6,7 +6,7 @@ You will need Node.js installed globally to run these files.
 
 Take a look at the "documentation" below. You can edit the main file (linkedList.mjs) and run a function of your choosing.
 
-## List of functions
+### List of functions
 
 1. ```append(value)``` - adds a new node containing ```value``` to the end of the list
 2. ```prepend(value)``` - adds a new node containing ```value``` to the start of the list
