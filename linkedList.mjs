@@ -36,11 +36,13 @@ function linkedList () {
     }
 
     const pop = function() {
-        let penult = list.at(length - 1);
+        if (length > 1) {
+            let penult = list.at(length - 1);
 
-        last = penult;
-        penult.next = null;
-        length -= 1;
+            last = penult;
+            penult.next = null;
+            length -= 1;
+        }
     }
 
     const contains = function(value, current = 1, subject = first) {
