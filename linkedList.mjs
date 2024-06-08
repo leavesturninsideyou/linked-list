@@ -1,25 +1,41 @@
-function linkedList () {
-    let last = node ("3", null);
-    let middle = node ("2", last);
-    let first = node ("1", middle);
+export function linkedList () {
+    let first = null;
     
-    let length = 3;
+    let length = 0;
 
     const head = () => {return first};
 
-    const tail = () => {return last};
+    const tail = function() {
+        if (first) {
+            let subject = first;
+            while (subject.next !== null) {
+                subject = subject.next;
+            }
+    
+            return subject;
+        } else {
+            return null;
+        }
+    };
 
     const append = function(value) {
         const newLast = node (value, null);
+        if (!first) {
+            first = newLast;
+        } else {
+            tail().next = newLast;
+        }
 
-        last.next = newLast;
-        last = newLast;
         length += 1;
+        
     }
 
-    const prepend = function(value) {
-        const nextNode = node (first.value, first.next);
-        const newFirst = node (value, nextNode);
+    const prepend = function(value) { 
+        const newFirst = node (value, null);
+
+        if (first) {
+            newFirst.next = first; 
+        } 
 
         first = newFirst;
         length += 1;
@@ -27,60 +43,93 @@ function linkedList () {
 
     const size = () => {return length};
 
-    const at = function(index, current = 1, subject = first) {
-        if (current === index) {
+    const at = function(index) {
+        if (first && index > 0) {
+            let index2 = 1;
+            let subject = first;
+
+            while (index !== index2) {
+                index2++;
+                subject = subject.next
+            }
+
             return subject;
         } else {
-            return at(index, current + 1, subject.next);
+            return null;
         }
     }
 
     const pop = function() {
-        if (length > 1) {
-            let penult = list.at(length - 1);
+        let penult = null;
 
-            last = penult;
+        if (length === 1) {
+            first = penult;
+        } else {
+            penult = list.at(length - 1);
             penult.next = null;
-            length -= 1;
         }
+        
+        length -= 1;
     }
 
-    const contains = function(value, current = 1, subject = first) {
-        if (value === subject.value) {
+    const contains = function(value) {
+        if (first) {
+            let subject = first;
+
+            while (value !== subject.value) {
+                if (subject.next === null) {
+                    return false;
+                } else {
+                    subject = subject.next;
+                }
+            }
+
             return true;
-        } else if (length === current) {
-            return false;
         } else {
-            return contains(value, current + 1, subject.next);
+            return "This linked list is empty.";
         }
     }
     
-    const find = function(value, current = 1, subject = first) {
-        if (value === subject.value) {
-            return current;
-        } else if (length === current) {
-            return null;
+    const find = function(value) {
+        if (first) {
+            let index = 1;
+            let subject = first;
+
+            while (subject.value !== value) {
+                if (subject.next === null) {
+                    return null;
+                } else {
+                    index++;
+                    subject = subject.next;
+                }
+            }
+
+            return index;
         } else {
-            return find(value, current + 1, subject.next);
+            return null;
         }
     }
 
-    const toString = function(current = 1, subject = first, listString = `(${subject.value})`) {
-        if (length === current) {
-            listString = listString + " -> null";
-            return listString;   
-        } else {
-            listString = listString + " -> " + `(${subject.next.value})`;
-            
-            return toString(current + 1, subject.next, listString);
-        }
+    const toString = function() {
+        if (first) {
+            let subject = first;
+            let listString = `(${subject.value})`;
+    
+            while (subject.next !== null) {
+                listString = listString + " -> " + `(${subject.next.value})`;
+                subject = subject.next;
+            }
 
+            return listString += " -> null";
+        } else {
+            return null;
+        }
     }
 
     return { append, prepend, size, head, tail, at, pop, contains, find, toString };
 }
 
-function node (data, data2) {
+export function node (data, data2) {
     const value = data;
     const next = data2;
 
@@ -95,6 +144,7 @@ list.prepend(value);
 console.log(list.head());
 
 */
+
 
 
 
