@@ -1,6 +1,6 @@
 # linked-list
 
-This project contains a singly linked list, a common data structure. By default, there are three nodes.
+This project contains a singly linked list, a common data structure.
 
 You will need Node.js installed globally to run these files.
 
